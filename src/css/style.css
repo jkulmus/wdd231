@@ -167,10 +167,8 @@ a:hover {
   overflow: hidden;
 }
 
-/* Header and Global Navigation Styles */
-.global-nav {
-  display: none;
-}
+/* Global Nav Style */
+
 .global-header {
   background-color: var(--bs-black);
   color: white;
