@@ -1,0 +1,62 @@
+{
+    "name": "Chocolate Chip Cookies",
+    "description": "A classic cookie recipe. A standard approach to chocolate chip cookies, including the optional addition of shredded coconut.",
+    "ingredients": [
+        {
+            "name": "butter",
+            "amount": "1",
+            "unit": "lb",
+            "notes": "softened"
+        },
+        {
+            "name": "brown sugar",
+            "amount": "1 1/2",
+            "unit": "cups"
+        },
+        {
+            "name": "white sugar",
+            "amount": "1",
+            "unit": "cup"
+        },
+        {
+            "name": "eggs",
+            "amount": "3"
+        },
+        {
+            "name": "vanilla",
+            "amount": "2",
+            "unit": "tsp"
+        },
+        {
+            "name": "baking soda",
+            "amount": "1 1/2",
+            "unit": "tsp"
+        },
+        {
+            "name": "salt",
+            "amount": "5",
+            "unit": "cups",
+            "notes": " we like 3 cups white and 2 cups whole wheat"
+        },
+        {
+            "name": "semi-sweet chocolate chips",
+            "amount": "2",
+            "unit": "cups"
+        },
+        {
+            "name": "shredded coconut",
+            "amount": "1-2",
+            "unit": "cups",
+            "notes": "optional"
+        },
+        {
+            "steps": [
+                "1. Cream the butter and sugar together, then beat in the eggs and vanilla",
+                "2. Mix in salt, soda, and flour",
+                "3. Add chocolate chips and coconut"   
+            ],
+            "cook time": "8-10 minutes",
+            "temperature": "350 F"
+        }
+    ]
+}
