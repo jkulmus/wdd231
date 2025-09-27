@@ -266,14 +266,15 @@ a:hover {
 }
 
 /* Main Content */
-.infro, .info {
-  max-width: 1200px; /*aligns w/pro web standards */
+.intro {
+  max-width: 1200px;
   margin: 2rem auto;
-  padding: 0 1rem; /*Ensures padding for small screens */
+  padding: 0 1rem; 
 }
 
 /* Main Headline */
-.intro h1 {
+.intro > h1 {
+  font-family: var(--bs-font-sans-serif);
   font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
@@ -281,7 +282,7 @@ a:hover {
 }
 
 /* Park Desc paragraph */
-.intro p {
+.intro > p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -291,6 +292,9 @@ a:hover {
 
 /* Container for media card */
 .info {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
   display: flex;
   flex-wrap: wrap; /* cards will stack on smaller screens */
   gap: 2rem; /* space between cards */
@@ -306,3 +310,78 @@ a:hover {
   overflow: hidden; /* image corners stay within card */
 }
 
+/* Image container */
+.media-card a {
+  text-decoration: none;
+  color: var(--bs-black);
+  display: block;
+}
+
+/* Image styling */
+.media-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headline Style */
+.media-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--bs-link-color);
+}
+
+/* Description para styling */
+.media-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--bs-grey-2);
+  padding: 0 1rem 1rem;
+  margin: 0;
+}
+
+/* Media Query for large screens */
+@media screen and (min-width: 768px) {
+  .media-card {
+    flex: 1 1 calc(33.33% - 1.33rem);
+  }
+}
+
+/* Footer Styling */
+#park-footer {
+  background-image: url('../images/topo-pattern-background-for-the-footer.png');
+  background-repeat: repeat;
+  background-color: var(--bs-grey-5);
+  color: var(--bs-white);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+#park-footer .contact {
+  max-width: 400px;
+  margin: auto;
+}
+
+#park-footer h3 {
+  font-family: var(--bs-body-font-family);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--bs-white);
+}
+
+#park-footer h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.25rem;
+  color: var(--bs-white);
+}
+
+#park-footer p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--bs-gray-300);
+  margin: 0;
+}
