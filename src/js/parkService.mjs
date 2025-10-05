@@ -1,4 +1,3 @@
-const baseUrl = "https://developer.nps.gov/api/v1/"
 const park = {
   id: "F58C6D24-8D10-4573-9826-65D42B8B83AD",
   url: "https://www.nps.gov/yell/index.htm",
@@ -181,7 +180,7 @@ const park = {
 };
 
 // Export new array
-export const parkInfoLinks = [
+const parkInfoLinks = [
   {
     name: "Current Conditions &#x203A;",
     link: "conditions.html",
@@ -202,13 +201,34 @@ export const parkInfoLinks = [
   }
 ];
 
-export async function getParkData() {
-  let data = {}
-  const response = await fetch(baseUrl + "parks" + "?parkCode=yell");
-  // check to make sure the response was ok
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+
+async function getJSON(url) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + url, options);
   if (response.ok) {
-    // convert to JSON
     data = await response.json();
-  } else throw new Error("response not ok")
+  } else throw new Error("response not ok");
   return data;
+}
+
+export function getInfoLinks(images) {
+  const withUpdatedImages = parkInfoLinks.map((item, index) => {
+    item.image = images[index + 2].url;
+    return item;
+  });
+  return withUpdatedImages;
+}
+
+export async function getParkData() {
+  const parkData = await getJSON("parks?parkCode=yell");
+  
+  return parkData.data[0];
 }
