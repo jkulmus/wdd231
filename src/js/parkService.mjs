@@ -60,11 +60,9 @@ async function getJson(url) {
 
 
 
-export function getInfoLinks(images) {
+export function getInfoLinks(data) {
   const withUpdatedImages = parkInfoLinks.map((item, index) => {
-    if (images[index + 2]) {
-      item.image = images[index + 2].url;
-    }
+    item.image = data[index + 2].url;
     return item;
   });
   return withUpdatedImages;
