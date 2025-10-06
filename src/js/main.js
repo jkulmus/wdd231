@@ -2,15 +2,7 @@ import { getParkData, getInfoLinks } from "./parkService.mjs";
 import setHeaderFooter from "./setHeaderFooter.mjs";
 import { mediaCardTemplate } from "./templates.mjs";
 
-async function init() {
-    const parkData = await getParkData();
-    const links = getInfoLinks(parkData.images);
-    setHeaderFooter(parkData);
-    setParkIntro(parkData);
-    setParkInfoLinks(parkInfoLinks);
-}
 
-init ();
 
 function setParkIntro(data) {
     const introEl = document.querySelector(".intro");
@@ -25,3 +17,12 @@ function setParkInfoLinks(data) {
     infoEl.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
+async function init() {
+    const parkData = await getParkData();
+    const links = getInfoLinks(parkData.images);
+    setHeaderFooter(parkData);
+    setParkIntro(parkData);
+    setParkInfoLinks(parkInfoLinks);
+}
+
+init ();

@@ -1,12 +1,3 @@
-function getMailingAddress(addresses) {
-    const mailing = addresses.find((address) => address.type === "Mailing");
-    return mailing;
-}
-function getVoicePhone(numbers) {
-    const voice = numbers.find((number) => number.type === "Voice");
-    return voice ? voice.phoneNumber : 'N/A';
-}
-
 export function parkInfoTemplate(info) {
     return `<a href="/" class="hero-banner__title">${info.fullName}</a>
     <p class="hero-banner__subtitle">
@@ -17,13 +8,23 @@ export function parkInfoTemplate(info) {
 
 export function mediaCardTemplate(info) {
     return `<div class="media-card">
-        <a href="${item.link}">
-            <img src="${item.image}" alt="${item.name}" class="media-card__img">
-            <h3>${item.name}</h3>
+        <a href="${info.link}">
+            <img src="${info.image}" alt="${info.name}" class="media-card__img">
+            <h3>${info.name}</h3>
         </a>
-        <p>${item.description}</p>
+        <p>${info.description}</p>
             </div>`;
 }
+
+function getMailingAddress(addresses) {
+    const mailing = addresses.find((address) => address.type === "Mailing");
+    return mailing;
+}
+function getVoicePhone(numbers) {
+    const voice = numbers.find((number) => number.type === "Voice");
+    return voice.phoneNumber;
+}
+
 
 export function footerTemplate(info) {
     const mailing = getMailingAddress(info.addresses);
