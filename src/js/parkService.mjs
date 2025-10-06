@@ -6,15 +6,15 @@ export async function getParkData() {
     headers: {
       "X-Api-Key": apiKey
     }
-  }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
+  if (response.ok) {
+    data = await response.json();
+  } else throw new Error("response not ok")
+  return data.data[0];
 };
 
-const data = {};
-const response = await fetch(baseUrl + "parks" + "?parkCode=yell", options);
-if (response.ok) {
-  data = await response.json();
-} else throw new Error("response not ok")
-return data;
 
 // Export new array
 const parkInfoLinks = [
