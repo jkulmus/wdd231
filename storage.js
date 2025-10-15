@@ -82,8 +82,14 @@ function manageTasks(e) {
 // New User Name Logic
 function  setUserName() {
     const name = localStorage.getItem("todo-user");
+    const userNameDisplay = document.querySelector(".user");
+
     if (name) {
-        document.querySelector(".user").innerText = name;
+        // display friendly welcoming!
+        userNameDisplay.innerText = `Welcome, ${name}!`;
+    } else {
+        // placeholder shows if no name is set
+        userNameDisplay.innerText = "[user name here]";
     }
 }
 function userNameHandler() {
