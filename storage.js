@@ -1,45 +1,18 @@
-// New User Name 
-
-function setUserName() {
-    // 1. Get the stored name from localStorage
-    const name = localStorage.getItem("todo-user");
-
-    // 2. If a name exists, set it in the header display element
-    if (name) {
-        document.querySelector(".user").innerText = 'Welcome, ${name}!';
-
-        // Optional: Also set the name i the input field
-        document.querySelector("#user").value = name;
-    } else {
-        // if no name is set, revert to the placeholder text
-        document.querySelector(".user").innerText = "[user name here]";
-        document.querySelector("#user").value = "[user name here]";
-    }
-}
-
-function userNameHandler() {
-    // 1. Get the name from the input field
-    const name = document.querySelector("#user").value.trim();
-
-    // 2. Save the name to localStorage
-    if (name && name !== '[user name here]') {
-        localStorage.setItem("todo-user", name);
-    } else {
-        //handle case where user clears the input or submits the placeholder
-        localStorage.removeItem("todo-user");
-    }
-
-    // 3. Update display on page
-    setUserName();
-}
-
-// Attach event listener to the button
-document.querySelector("#userNameButton").addEventListener("click", userNameHandler);
-
-// Check to see if a user name has been set.. if yes, ten set it in the header
-setUserName();
-
 let tasks = [];
+
+function setLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getLocalStorage(key) {
+    const storedValue = localStorage.getItem(key);
+    // Check if anything was found
+    if (storedValue) {
+        return JSON.parse(storedValue);
+    }
+    // if not, return empty array
+    return [];
+}
 
 function taskTemplate(task) {
   return `
@@ -66,6 +39,8 @@ function newTask() {
   const task = document.querySelector("#todo").value;
   // add it to our arrays tasks
   tasks.push({ detail: task, completed: false });
+  // Save tasks array to local storage
+  setLocalStorage("todos", tasks);
   // render out the list
   renderTasks(tasks);
 }
@@ -74,9 +49,11 @@ function removeTask(taskElement) {
   // Notice how we are using taskElement instead of document as our starting point?
   // This will restrict our search to the element instead of searching the whole document.
   tasks = tasks.filter(
-    (task) => task.detail != taskElement.querySelector('p').innerText
+    (task) => task.detail != taskElement.querySelector("p").innerText
   );
   taskElement.remove();
+  // update localStorage with changes
+  setLocalStorage("todos", tasks);
 }
 
 function completeTask(taskElement) {
@@ -86,6 +63,8 @@ function completeTask(taskElement) {
   tasks[taskIndex].completed = tasks[taskIndex].completed ? false : true;
   taskElement.classList.toggle("strike");
   console.log(tasks);
+  // update localStorage with changes
+  setLocalStorage("todos", tasks);
 }
 
 function manageTasks(e) {
@@ -100,9 +79,31 @@ function manageTasks(e) {
   }
 }
 
+// New User Name Logic
+function  setUserName() {
+    const name = localStorage.getItem("todo-user");
+    if (name) {
+        document.querySelector(".user").innerText = name;
+    }
+}
+function userNameHandler() {
+    const name = document.querySelector("#user").value;
+    localStorage.setItem("todo-user", name);
+    setUserName();
+}
+
+function init() {
+    // Check for any tasks in localStorage
+    tasks = getLocalStorage("todos");
+    // Render initial list of tasks (if any) when page loads
+    renderTasks(tasks);
+    // check if a user name has been set... if yes then set it in the header
+    setUserName();
+}
+
 // Add your event listeners here
 document.querySelector("#submitTask").addEventListener("click", newTask);
 document.querySelector("#todoList").addEventListener("click", manageTasks);
+document.querySelector("#userNameButton").addEventListener("click", userNameHandler);
 
-// render  the initial list of tasks (if any) when the page loads
-renderTasks(tasks);
+init();
