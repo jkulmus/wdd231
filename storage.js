@@ -1,3 +1,44 @@
+// New User Name 
+
+function setUserName() {
+    // 1. Get the stored name from localStorage
+    const name = localStorage.getItem("todo-user");
+
+    // 2. If a name exists, set it in the header display element
+    if (name) {
+        document.querySelector(".user").innerText = 'Welcome, ${name}!';
+
+        // Optional: Also set the name i the input field
+        document.querySelector("#user").value = name;
+    } else {
+        // if no name is set, revert to the placeholder text
+        document.querySelector(".user").innerText = "[user name here]";
+        document.querySelector("#user").value = "[user name here]";
+    }
+}
+
+function userNameHandler() {
+    // 1. Get the name from the input field
+    const name = document.querySelector("#user").value.trim();
+
+    // 2. Save the name to localStorage
+    if (name && name !== '[user name here]') {
+        localStorage.setItem("todo-user", name);
+    } else {
+        //handle case where user clears the input or submits the placeholder
+        localStorage.removeItem("todo-user");
+    }
+
+    // 3. Update display on page
+    setUserName();
+}
+
+// Attach event listener to the button
+document.querySelector("#userNameButton").addEventListener("click", userNameHandler);
+
+// Check to see if a user name has been set.. if yes, ten set it in the header
+setUserName();
+
 let tasks = [];
 
 function taskTemplate(task) {
