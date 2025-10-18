@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yellowstone National Park</title>
+    <title>Yellowstone National Park - Current Conditions</title>
     <link rel="stylesheet" href="css/style.css" />
     <script type="module" src="js/conditions.js"></script>
   </head>
@@ -17,7 +17,7 @@
       <ul>
         <li>
           <a
-            href="#global-nav-toggle"
+            href="#global-header-focus-target"
             aria-label="Skip to global NPS navigation"
             >Skip to global NPS navigation</a
           >
@@ -41,7 +41,7 @@
         </li>
       </ul>
     </div>
-    <header>
+    <header id="global-header-focus-target" tabindex="-1">
   <section class="global-header">
     <a href="index.html" class="site-title">
       <span class="logo" role="presentation"></span>
@@ -57,7 +57,7 @@
         </svg>
         <span class="visually-hidden">Search</span>
       </a>
-      <button id="global-nav-toggle">
+      <button id="global-nav-toggle" tabindex="-1">
         <svg class="icon">
           <use
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -79,10 +79,10 @@
         </p>
       </div>
     </div>
-    <nav class="park-nav">
+    <nav class="park-nav" id="local-nav">
       <ul>
         <li>
-          <a href="#">
+          <a href="conditions.html">
             <span>Info</span>
             <svg class="icon" role="presentation" focusable="false">
               <use
@@ -93,7 +93,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="conditions.html">
             <span>Alerts</span>
             <svg class="icon" role="presentation" focusable="false">
               <use
@@ -150,14 +150,14 @@
         <h2>Visitor Services</h2>
         <details name="current-details">
           <summary>Visitor Centers</summary>
-          <ul></ul>
+          <ul id="visitor-center-list"></ul>
         </details>
       </section>
       <section class="activities">
         <h2>Activities</h2>
         <details name="current-details">
           <summary>All Activities</summary>
-          <ul></ul>
+          <ul id="activities-list"></ul>
         </details>
       </section>
     </main>
