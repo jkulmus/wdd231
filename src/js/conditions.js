@@ -26,13 +26,15 @@ function setAlerts(alerts) {
 }
 
 function setVisitorCenters(centers) {
-    const centersContainer = document.querySelector(".visitor ul");
+    const centersContainer = document.querySelector("#visitor-centers-list");
+    centersContainer.innerHTML ="";
     const html = centers.map(visitorCenterTemplate);
     centersContainer.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
 function setActivities(activities) {
-    const activitiesContainer = document.querySelector(".activities ul");
+    const activitiesContainer = document.querySelector("#activities-list");
+    activitiesContainer.innerHTML = "";
     const html = activityListTemplate(activities);
     activitiesContainer.insertAdjacentHTML("afterbegin", html);
 }
