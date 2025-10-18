@@ -18,12 +18,11 @@ export function mediaCardTemplate(info) {
             </div>`;
 }
 function getMailingAddress(addresses) {
-    const mailing = addresses.find((address) => address.type === "Mailing");
-    return mailing;
+    return addresses.find((address) => address.type === "Mailing") || { line1: 'N/A', city: 'N/A', stateCode: 'N/A', postalCode: 'N/A' };
 }
 function getVoicePhone(numbers) {
     const voice = numbers.find((number) => number.type === "Voice");
-    return voice.phoneNumber;
+    return voice ? voice.phoneNumber : 'N/A';
 }
 export function footerTemplate(info) {
     const mailing = getMailingAddress(info.addresses);
