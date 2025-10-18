@@ -14,3 +14,19 @@
 .disclaimer {
   padding: 0 1em;
 }
+
+.alert-information { color: var(--alert-information);}
+.alert-danger { color: var(--alert-danger);}
+.alert-closure { color: var(--alert-closure);}
+.alert-caution { color: var(--alert-caution);}
+
+.open-indicator {
+  color: var(--alert-information);
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+.closed-indicator {
+  color: var(--alert-closure);
+  font-weight: bold;
+  margin-left: 0.5rem;
+}

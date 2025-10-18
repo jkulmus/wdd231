@@ -1,0 +1,67 @@
+main h1 {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+.alerts, .visitor, .activities {
+    margin-bottom: 2rem;
+}
+
+/* Alerts */
+.alerts > ul {
+    list-style: none;
+    padding: 0;
+}
+.alert {
+    margin: 0.5rem;
+    padding: 0.5rem 0 0.8rem 0;
+    display: flex;
+    gap: 1em;
+    border-bottom: 1px solid var(--bs-grey-3);
+}
+.alert h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+.alert p {
+    margin: 0;
+}
+.alert svg {
+    height: 30px;
+    width: 30px;
+    margin: 0.25em;
+    flex: 0 0 auto;
+}
+
+/* Accorion Sections */
+.visitor details, .activities details {
+    border: 1px solid var(--bs-grey-3);
+    margin-bottom: 1rem;
+}
+.visitor summary, .activities summary {
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: var(--bs-grey-2);
+}
+.visitor ul, .activities ul {
+    list-style: none;
+    padding: 1rem 0 0 0;
+    margin: 0;
+}
+.visitor ul li, .activities ul li {
+    padding: 1rem;
+    border-bottom: 1px solid var(--bs-grey-3);
+}
+.visitor ul li:last-child {
+    border-bottom: none;
+}
+.visitor ul li h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.visitor ul li h4 {
+    margin: 0.5rem 0 0.2rem 0;
+    font-size: 1em;
+    font-weight: bold;
+}
