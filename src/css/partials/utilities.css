@@ -20,13 +20,10 @@
 .alert-closure { color: var(--alert-closure);}
 .alert-caution { color: var(--alert-caution);}
 
-.open-indicator {
-  color: var(--alert-information);
-  font-weight: bold;
-  margin-left: 0.5rem;
+.hide {
+  display: none;
 }
-.closed-indicator {
-  color: var(--alert-closure);
-  font-weight: bold;
-  margin-left: 0.5rem;
+
+.rotate {
+  transform: rotate(180deg);
 }

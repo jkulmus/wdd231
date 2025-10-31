@@ -1,3 +1,5 @@
+/* current conditions */
+
 main {
     padding: 1rem;
 }
@@ -33,7 +35,8 @@ main {
     flex: 0 0 auto;
 }
 
-/* Accorion Sections */
+/* Accorion/visitor Sections */
+
 .visitor > details > ul {
     list-style: none;
     padding: 0;
