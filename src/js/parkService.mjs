@@ -214,7 +214,7 @@ async function getJson(url) {
 
   let data = {};
   const response = await fetch(baseUrl + url, options);
-
+  
   if (response.ok) {
     data = await response.json();
   } else throw new Error("API response not ok");
