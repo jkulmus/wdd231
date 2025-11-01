@@ -27,4 +27,34 @@ async function init() {
     setParkInfoLinks(links);
 }
 
+function enableNaviation() {
+    const menuButton = document.querySelector("#global-nav-toggle");
+    const subMenuToggles = document.querySelectorAll(
+        ".global-nav__split-button__toggle"
+    );
+
+    // when main menu is clicked:
+    menuButton.addEventListener("click", (ev) => {
+        let target = enableNaviation.target;
+        // toggle the show class on the global-nav
+        document.querySelector(".global-nav").classList.toggle("show");
+        // check to see if ev.target is the button or something inside the button
+        if (target.tagName != "BUTTON") {
+            target = target.closest("button");
+        }
+
+        // check to see if we just opened or closed the menu
+        if (document.querySelector("global-nav").classList.contains("show")) {
+            // if we opened it the set aria-expanded attribute to true
+            target.setAttribute("aria-expanded", true);
+        } else {
+            // if we closed it then set the aria-expanded to false
+            target.setAttribute("aria-expanded", false);
+        }
+
+        console.log("toggle");
+    });
+}
+
 init ();
+enableNaviation();
