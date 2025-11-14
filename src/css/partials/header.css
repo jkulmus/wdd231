@@ -86,6 +86,66 @@
   --icon-color: white;
 }
 
+.global-nav__section-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1rem 0.625rem;
+  font-size: 1.25rem;
+}
+/* Style the 1st heading (Explore this Park) as green */
+.global-nav__section-heading:first-of-type {
+  color: var(--bs-light-green);
+}
+/* Style the 2nd heading (Explore the National Park Service) a blue */
+.global-nav__section-heading:nth-of-type(2) {
+  color: var(--bs-chathams-blue-3);
+}
+
+.global-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #444;
+}
+
+.global-nav__split-button {
+  display: flex; /* Aligns the link and button horizontally */
+  background-color: var(--bs-gray-800); /* Darker gray background for the link row */
+}
+
+/* Link (text) styling: takes up most space, white text, no underline by default */
+.global-nav__split-button > a {
+  flex: 1;
+  align-self: center;
+  padding: 1rem 0.625rem;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+/* Button (toggle) styling: square shape, placed on the right */
+.global-nav__split-button > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  border-left: 1px solid #444; /* Separator line for button */
+  /* Remove duplicate button styles from above */
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Hover Effects: buton & link background darkens slightly */
+.global-nav__split-button > button:hover,
+.global-nav__split-button > a:hover {
+  background-color: var(--bs-gray-900);
+}
+/* Link hover: adds underline */
+.global-nav__split-button > a:hover {
+  text-decoration: underline;
+}
+
 /* styles to control opening and closing of menus */
 
 .global-nav__toggle--closed {
@@ -106,6 +166,41 @@
 
 .global-nav.show {
   max-height: 1000px;
+}
+
+.global-nav__submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8em;
+  overflow: hidden;
+  max-height: 0; /* hide by default */
+  transition: max-height 0.3s ease-in-out; /* smooth transition for slide-down */
+}
+
+/* Submenu links */
+.global-nav__submenu a {
+  display: block;
+  padding: 1rem 0.625rem;
+  color: white;
+  text-decoration: none;
+  background-color: var(--bs-gray-800); /* Same as the split button */
+}
+.global-nav__submenu a:hover {
+  text-decoration: underline;
+}
+
+/* State when the submenu is OPEN (toggled by JS) */
+.global-nav__submenu.show {
+  max-height: 50vh; /* large value allows transition to work for opening */
+}
+
+/* Arrow icon rotation for JS toggle */
+.global-nav__split-button__toggle .icon {
+  transition: transform 0.3s ease-in-out;
+}
+.global-nav__split-button__toggle .icon.rotate {
+  transform: rotate(180deg);
 }
 
 /* Hero banner */
@@ -168,4 +263,56 @@
 .park-nav svg {
   width: 24px;
   height: 24px;
+}
+
+/* Adjust for wide screens*/
+@media (min-width: 768px) {
+  /* Hide main menu toggle & the Explore this Park section */
+  .global-nav {
+    max-height: fit-content;
+    overflow: visible;
+    transition: none;
+    border-top: none;
+  }
+
+  .global-nav > h2:first-of-type, /* Hide Explore this Park heading */
+  .global-nav__list:first-of-type { /*Hide Explore the Park list */
+    display: none; 
+  }
+
+  /* style the main list (explore the National Park Service) as horizontal columns */
+  .global-nav__list {
+    display: flex;
+    flex-direction: row; /* arranges Plan, Learn, Get Involved side-by-side */
+    justify-content: space-around;
+    border-top: none;
+  }
+
+  /* Reset the background color of the split button container */
+  .global-nav__split-button {
+    background-color: inherit; /* remove the dark background */
+  }
+
+  /* Display submenus vertiacally beneath their parent link */
+  .global-nav__submenu {
+    display: flex;
+    flex-direction: column; /* sub-link stack vertically */
+    max-height: fit-content; /* ensure submenus are visible */
+    overflow: visible;
+    /* remove transition for side screen */
+    transition: none;
+    font-size: 1em; /* adjust font size back to normal */
+    background-color: transparent; /* no dark background on sub-list */
+  }
+  .global-nav__submenu.show {
+    max-height: fit-content;
+  }
+
+  /* adjust link padding and reset colors for the wide screen design */
+  .global-nav__split-button > a,
+  .global-nav__submenu a {
+    padding: 0.625rem; /* consistent, smaller padding */
+    color: initial; /* use default text color (black/dark) */
+    background-color: transparent; /* remove dark background */
+  }
 }
